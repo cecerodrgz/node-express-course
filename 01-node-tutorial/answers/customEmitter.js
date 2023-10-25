@@ -1,18 +1,12 @@
 const EventEmitter = require('events');
 
-const customEmitter = new EventEmitter();
-customEmitter.on('response', (name, id) => {
-    console.log(`${name} is ${id} old, according to the Night Court records`)
-})
+const emitter = new EventEmitter();
 
-customEmitter.on('alert', (message) => {
-    console.log(`Alert: ${message}`)
-})
+setInterval(() => {
+    emitter.emit('timer', 'hi there');
+}, 2000)
 
-customEmitter.on('customEvent', (param1, param2) => {
-    console.log(`Custom event received: ${param1}, ${param2}`)
-})
 
-customEmitter.emit('response', 'Velaris', 5000);
-customEmitter.emit('alert', 'This is an important message');
-customEmitter.emit('customEvent', 'Parameter 1', 'Parameter 2');
+emitter.on('timer', (msg) => console.log(`Message received: ${msg}`))
+
+emitter.emit('msg', 'Hi, this is a message')

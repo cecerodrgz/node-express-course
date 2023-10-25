@@ -1,20 +1,22 @@
 const fs = require('fs').promises;
 
-async function writer() {
-    try{
-        const data = `Line 1\nLine 2\nLine 3`;
-        await fs.writeFile ('../answers/temporary/tempt.txt', data);
-        console.log('File tempt.txt has been written succesfully.')
-
-    } catch(error){
-        console.log('Error with file:', error)
+async function writeDataToFile() {
+    try {
+        await fs.writeFile("temp.txt", "Line 1");
+        await fs.writeFile("temp.txt", "Line 2\n", { flag: "a" });
+        const test = await fs.writeFile("temp.txt", "Line 3", { flag: "a" });
+        return test;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error; 
     }
 }
 
-writer()
-.then(() => {
-    console.log('File writing process completed.')
-})
-.catch((error) => {
-    console.log('Error:', error)
-})
+writeDataToFile()
+    .then((result) => {
+        console.log('File writing process completed.');
+        console.log('Result:', result);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
