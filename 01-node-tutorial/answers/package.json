@@ -40,6 +40,10 @@
     "undefsafe": "^2.0.5",
     "yallist": "^4.0.0"
   },
+  "name": "answers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "prompter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon prompter.js",
@@ -48,4 +52,7 @@
   "author": "",
   "license": "ISC",
   "description": ""
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
